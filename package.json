@@ -1,0 +1,29 @@
+{
+  "name": "employee_tracker",
+  "version": "0.1.0",
+  "description": "A CLI content management system for insteracting with an employee database.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SprengerV/employee_tracker.git"
+  },
+  "author": "Brendan Francis",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/SprengerV/employee_tracker/issues"
+  },
+  "homepage": "https://github.com/SprengerV/employee_tracker#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "inquirer": "^8.0.0",
+    "mysql": "^2.18.1",
+    "path": "^0.12.7",
+    "sequelize": "^6.5.0"
+  }
+}
