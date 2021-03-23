@@ -1,46 +1,47 @@
-const { Model, DataTypes } = require('sequelize');
-const path = require('path');
-const sequelize = require(path.join(__dirname, '..', 'config', 'connection.js'));
-const Role = require(path.join(__dirname, 'Role.js'));
-
+const { Model, DataTypes } = require('sequelize')
+const sequelize = require('../config/connection.js')
 class Employee extends Model {}
 
 Employee.init(
-    {
-        id: {
-            type: DataTypes.INTEGER,
-            primaryKey: true,
-        },
-        first_name: {
-            type: DataTypes.STRING(30)
-        },
-        last_name: {
-            type: DataTypes.STRING(30)
-        },
-        role_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: Role,
-                id: 'id',
-            },
-        },
-        manager_id: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
-            references: {
-                model: Employee,
-                id: 'id',
-            },
-        },
+  {
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true
     },
-    {
-        sequelize,
-        timestamps: false,
-        underscored: true,
-        modelName: 'employees'
+    first_name: {
+      type: DataTypes.STRING(30),
+      allowNull: false
+    },
+    last_name: {
+      type: DataTypes.STRING(30),
+      allowNull: false
+    },
+    role_id: {
+      type: DataTypes.UUID,
+      defaultValue: null,
+      allowNull: true
+      // references: {
+      //     model: Role,
+      //     key: 'id',
+      // },
+    },
+    manager_id: {
+      type: DataTypes.UUID,
+      defaultValue: null,
+      allowNull: true
+      // references: {
+      //     model: Employee,
+      //     key: 'id',
+      // },
     }
-);
-// Employee.hasOne(Role);
+  },
+  {
+    sequelize,
+    timestamps: false,
+    underscored: true,
+    modelName: 'employees'
+  }
+)
 
-
-module.exports = Employee;
+module.exports = Employee

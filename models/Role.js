@@ -1,38 +1,42 @@
-const { Model, DataTypes } = require('sequelize');
-const path = require('path');
-const sequelize = require(path.join(__dirname, '..', 'config', 'connection.js'));
-const Department = require(path.join(__dirname, 'Department.js'));
+const { Model, DataTypes } = require('sequelize')
+const sequelize = require('../config/connection.js')
 
 class Role extends Model {}
 
 Role.init(
-    {
-        id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true,
-        },
-        title: {
-            type: DataTypes.STRING(30)
-        },
-        salary: {
-            type: DataTypes.DECIMAL(10,2)
-        },
-        department_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: Department,
-                key: 'id',
-            },
-        },
+  {
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true
+      // references: {
+      //     model: Employee,
+      //     key: 'role_id',
+      // }
     },
-    {
-        sequelize,
-        timestamps: false,
-        underscored: true,
-        modelName: 'roles',
+    title: {
+      type: DataTypes.STRING(30),
+      allowNull: false
+    },
+    salary: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false
+    },
+    department_id: {
+      type: DataTypes.UUID,
+      allowNull: true
+      // references: {
+      //     model: Department,
+      //     key: 'id',
+      // },
     }
-);
-// Role.hasOne(Department);
+  },
+  {
+    sequelize,
+    timestamps: false,
+    underscored: true,
+    modelName: 'roles'
+  }
+)
 
-module.exports = Role;
+module.exports = Role

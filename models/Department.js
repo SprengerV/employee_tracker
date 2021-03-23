@@ -1,26 +1,32 @@
-const { Model, DataTypes } = require('sequelize');
-const path = require('path')
-const sequelize = require(path.join(__dirname, '..', 'config', 'connection.js'));
+const { Model, DataTypes } = require('sequelize')
+const sequelize = require('../config/connection.js')
 
 class Department extends Model {}
 
 Department.init(
-    {
-        id: {
-            type: DataTypes.INTEGER,
-            primaryKey: true,
-            autoIncrement: true,
-        },
-        name: {
-            type: DataTypes.STRING
-        },
+  {
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      // autoIncrement: true,
+      primaryKey: true
+      // references: {
+      //     model: Role,
+      //     key: 'department_id',
+      // },
     },
-    {
-        sequelize,
-        timestamps: false,
-        underscored: true,
-        modelName: 'departments'
+    name: {
+      type: DataTypes.STRING(25),
+      unique: true,
+      allowNull: false
     }
-);
+  },
+  {
+    sequelize,
+    timestamps: false,
+    underscored: true,
+    modelName: 'departments'
+  }
+)
 
-module.exports = Department;
+module.exports = Department
