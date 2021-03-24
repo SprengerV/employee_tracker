@@ -22,14 +22,14 @@ Role.init(
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false
     },
-    department_id: {
-      type: DataTypes.UUID,
-      allowNull: true
-      // references: {
-      //     model: Department,
-      //     key: 'id',
-      // },
-    }
+    // department_id: {
+    //   type: DataTypes.UUID,
+    //   allowNull: true
+    //   references: {
+    //     model: Department,
+    //     key: 'id',
+    //   }
+    // }
   },
   {
     sequelize,

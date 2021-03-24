@@ -16,25 +16,25 @@ Employee.init(
     last_name: {
       type: DataTypes.STRING(30),
       allowNull: false
-    },
-    role_id: {
-      type: DataTypes.UUID,
-      defaultValue: null,
-      allowNull: true
-      // references: {
-      //     model: Role,
-      //     key: 'id',
-      // },
-    },
-    manager_id: {
-      type: DataTypes.UUID,
-      defaultValue: null,
-      allowNull: true
-      // references: {
-      //     model: Employee,
-      //     key: 'id',
-      // },
     }
+    // role_id: {
+    //   type: DataTypes.UUID,
+    //   defaultValue: null,
+    //   allowNull: true
+    //   // references: {
+    //   //     model: Role,
+    //   //     key: 'id',
+    //   // },
+    // },
+    // manager_id: {
+    //   type: DataTypes.UUID,
+    //   defaultValue: null,
+    //   allowNull: true
+    //   references: {
+    //     model: Employee,
+    //     key: 'id',
+    //   },
+    // }
   },
   {
     sequelize,
