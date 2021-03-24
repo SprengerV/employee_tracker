@@ -32,7 +32,6 @@ const ask = async () => {
       else {
         let trim = ans1.what.split(' ')
         trim = trim[1]
-        console.log(trim)
         require(`./lib/${ans2.which.toLowerCase()}.js`)(trim)
       }
     }

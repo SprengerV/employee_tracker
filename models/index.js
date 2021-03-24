@@ -6,29 +6,16 @@ Employee.hasOne(Employee, {
   foreignKey: 'manager_id',
   as: 'manager'
 })
+// Employee.belongsTo(Employee)
 
-Role.hasMany(Employee, {
-  as: 'role_employees'
-})
+Role.hasMany(Employee)
 Employee.belongsTo(Role, {
-  foreignKey: 'role_id',
-  as: 'role'
+  foreignKey: 'role_id'
 })
 
-// Role.belongsTo(Employee, {
-//     as: 'employees',
-// });
-
-// Role.hasOne(Department, {
-//     foreignKey: 'department_id',
-//     as: 'department',
-// });
-Department.hasMany(Role, {
-  as: 'department_roles'
-})
+Department.hasMany(Role)
 Role.belongsTo(Department, {
   foreignKey: 'department_id'
-  // as: 'department',
 })
 
 module.exports = { Department, Role, Employee }
