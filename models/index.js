@@ -1,7 +1,6 @@
 const Department = require('./Department.js')
 const Role = require('./Role.js')
 const Employee = require('./Employee.js')
-const { DataTypes } = require('sequelize')
 
 Employee.hasMany(Employee, {
   // foreignKey: 'manager_id',
