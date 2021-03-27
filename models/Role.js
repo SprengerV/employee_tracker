@@ -21,7 +21,7 @@ Role.init(
     salary: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false
-    },
+    }
     // department_id: {
     //   type: DataTypes.UUID,
     //   allowNull: true

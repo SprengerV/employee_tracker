@@ -3,12 +3,13 @@ const Role = require('./Role.js')
 const Employee = require('./Employee.js')
 const { DataTypes } = require('sequelize')
 
-Employee.hasOne(Employee, {
+Employee.hasMany(Employee, {
   // foreignKey: 'manager_id',
   // as: 'manager'
 })
 Employee.belongsTo(Employee, {
-  foreignKey: 'manager_id'
+  foreignKey: 'manager_id',
+  as: 'manager'
 })
 
 Role.hasMany(Employee)
