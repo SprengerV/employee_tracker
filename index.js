@@ -5,7 +5,7 @@ const option = process.argv[2]
 
 if (!option) {
   sequelize
-    .sync({ force: false, logging: console.log })
+    .sync({ force: false, logging: false })
     .then(() => {
       console.log('Welcome to the employeee database and tracker!')
       ask()
