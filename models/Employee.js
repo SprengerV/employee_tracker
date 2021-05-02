@@ -1,5 +1,7 @@
-const { Model, DataTypes } = require('sequelize')
-const sequelize = require('../config/connection.js')
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
+const Role = require('./Role');
+
 class Employee extends Model {}
 
 Employee.init(
@@ -9,32 +11,32 @@ Employee.init(
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true
     },
-    first_name: {
+    firstName: {
       type: DataTypes.STRING(30),
       allowNull: false
     },
-    last_name: {
+    lastName: {
       type: DataTypes.STRING(30),
       allowNull: false
+    },
+    roleId: {
+      type: DataTypes.UUID,
+      defaultValue: null,
+      allowNull: true,
+      references: {
+          model: Role,
+          key: 'id',
+      },
+    },
+    managerId: {
+      type: DataTypes.UUID,
+      defaultValue: null,
+      allowNull: true,
+      references: {
+        model: Employee,
+        key: 'id',
+      },
     }
-    // role_id: {
-    //   type: DataTypes.UUID,
-    //   defaultValue: null,
-    //   allowNull: true
-    //   // references: {
-    //   //     model: Role,
-    //   //     key: 'id',
-    //   // },
-    // },
-    // manager_id: {
-    //   type: DataTypes.UUID,
-    //   defaultValue: null,
-    //   allowNull: true
-    //   references: {
-    //     model: Employee,
-    //     key: 'id',
-    //   },
-    // }
   },
   {
     sequelize,
@@ -42,6 +44,6 @@ Employee.init(
     underscored: true,
     modelName: 'employees'
   }
-)
+);
 
-module.exports = Employee
+module.exports = Employee;
