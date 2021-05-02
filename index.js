@@ -1,7 +1,7 @@
 const sequelize = require('./config/connection.js')
 const ask = require('./lib/ask.js')
 
-const option = process.argv[2]
+const option = process.argv[2];
 
 if (!option) {
   sequelize
@@ -10,11 +10,12 @@ if (!option) {
       console.log('Welcome to the employeee database and tracker!')
       ask()
     })
-    .catch((err) => {
-      throw new Error(err)
-    })
+    .catch(err => console.error(err));
 } else if (option === 'init') {
   sequelize
     .sync()
     .then(() => require('./seeds'))
+    .catch(err => console.error(err));
+} else {
+  console.log(`Invalid option ${option.toUpperCase()}`)
 }
