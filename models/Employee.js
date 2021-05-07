@@ -28,6 +28,10 @@ Employee.init(
           key: 'id',
       },
     },
+    manager: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
     managerId: {
       type: DataTypes.UUID,
       defaultValue: null,

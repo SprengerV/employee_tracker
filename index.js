@@ -1,5 +1,6 @@
-const sequelize = require('./config/connection.js')
-const ask = require('./lib/ask.js')
+const sequelize = require('./config/connection.js');
+const ask = require('./lib/ask.js');
+const Models = require('./models');
 
 const option = process.argv[2];
 
@@ -8,7 +9,7 @@ if (!option) {
     .sync({ force: false, logging: false })
     .then(() => {
       console.log('Welcome to the employeee database and tracker!')
-      ask()
+      ask();
     })
     .catch(err => console.error(err));
 } else if (option === 'init') {

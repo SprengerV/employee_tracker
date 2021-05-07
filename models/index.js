@@ -2,7 +2,9 @@ const Department = require('./Department');
 const Role = require('./Role');
 const Employee = require('./Employee');
 
-Employee.hasMany(Employee);
+Employee.hasMany(Employee, {
+  foreignKey: 'managerId'
+});
 Employee.belongsTo(Employee, {
   foreignKey: 'managerId'
 });
