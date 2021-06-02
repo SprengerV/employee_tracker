@@ -8,7 +8,7 @@ if (!option) {
   sequelize
     .sync({ force: false, logging: false })
     .then(() => {
-      console.log('Welcome to the employeee database and tracker!')
+      console.log('Welcome to the employeee database and tracker!');
       ask();
     })
     .catch(err => console.error(err));
@@ -18,5 +18,5 @@ if (!option) {
     .then(() => require('./seeds'))
     .catch(err => console.error(err));
 } else {
-  console.log(`Invalid option ${option.toUpperCase()}`)
+  console.log(`Invalid option ${option.toUpperCase()}`);
 }
